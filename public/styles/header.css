@@ -1,0 +1,16 @@
+header {
+  height: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #f6fbfa;
+  background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
+}
+
+header img {
+  display: flex;
+  padding-top: 30px;
+}
