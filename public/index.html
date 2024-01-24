@@ -41,6 +41,10 @@
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <!-- NAV CSS -->
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+    <!-- HEADER CSS -->
+    <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+    <!--- NEW TWEET CSS -->
+    <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -54,12 +58,41 @@
     <nav>
       <span>tweeter</span>
       <div class="tweet-container">
-        <header>Write a new tweet!</header>
+        <h4>Write a new tweet!</h4>
         <i class="fa-solid fa-angles-down"></i>
       </div>
     </nav>
 
+    <header>
+      <div>
+          <img src="/images/profile-hex.png"> 
+      </div>
+      <br>
+      <div>
+          <h2>Your Name</h2>
+      </div>
+    </header>
+
     <!-- Page-specific (main) content here -->
-    <main class="container"></main>
+    <main class="container">
+
+    <section class="new-tweet">
+      <h2>Compose Tweet</h2>
+      <form action="/tweets" method="POST">
+        <label for="tweet-text">What are you humming about?</label>
+        <textarea name="text" id="tweet-text"></textarea>
+        <div>
+          <button type="submit">Tweet</button>
+          <output name="counter" class="counter" for="tweet-text">140</output>
+        </div>
+      </form>
+    </section>
+
+      <h5>Trump</h5>
+        <p>Lorem Ipsum is the single greatest threat. We are not - we are not keeping up with other websites. Lorem Ipsum best not make any more threats to your website. It will be met with fire and fury like the world has never seen. Does everybody know that pig named Lorem Ipsum? An ‘extremely credible source’ has called my office and told me that Barack Obama’s placeholder text is a fraud.</p>    
+      <h5> Zombies </h5>
+        <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium.</p>
+    
+      </main>
   </body>
 </html>
