@@ -1,0 +1,44 @@
+.tweets-container article {
+  padding: 10px;
+  border: 3px solid grey;
+}
+.tweets-container article:hover {
+  box-shadow: 5px 5px 5px grey;
+}
+
+.tweets-container article footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tweets-container article h5 {
+  display: flex;
+  justify-content: flex-start;
+  margin: auto;
+  gap: 30px;
+}
+.tweets-container h5 details {
+  margin-left: auto;
+}
+.tweeter-container footer time {
+  display: flex;
+  justify-content: flex-start;
+}
+.tweets-container footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.tweets-container p {
+  border-bottom: 3px solid grey;
+  padding: 10px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.fa-solid.fa-flag:hover,
+.fa-solid.fa-share:hover, 
+.fa-solid.fa-heart:hover {
+  color: red;
+}
