@@ -1,5 +1,5 @@
 
-form textarea {
+.new-tweet textarea {
   height: 30px;
   width: 100%;
   border-top: 0;
@@ -10,18 +10,24 @@ form textarea {
   padding: 10px;
 }
 
-div {
-  padding-top: 10px;
+.new-tweet div {
+  padding: 15px;
+  padding-bottom: 30px;
   display: flex;
   justify-content: space-between;
   font-family: "Bungee", sans-serif;
   font-weight: 400;
   font-style: normal;
+  background-color: #f4f1ec;
 }
 
-div button {
+.new-tweet button {
   border: 0;
   background-color: blue;
   color: #FFFFFF;
   border-radius: 5px;
+}
+
+.over-limit {
+  color: red;
 }
