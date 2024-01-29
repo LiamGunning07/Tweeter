@@ -54,6 +54,38 @@ tweets.forEach(tweet => {
 
 
 $(function() {
+
+  $('#my-form').on('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submit action
+    
+    var formData = $(this).serialize(); // Serialize form data
+    console.log("Form data", formData);
+
+      if(formData.length == 5) {
+        alert("Tweets Must contain atleast 1 character");
+        return;
+      };
+      
+      if(formData.length > 145) {
+        alert("Tweets Must contain less than 140 characters");
+        return;
+      };
+
+    $.ajax({
+      type: "POST",
+      url: "/tweets", // Replace with your server endpoint
+      data: formData,
+      success: function(response) {
+        // Handle success (show success message, clear form, etc.)
+        alert("Message sent successfully!");
+      },
+      error: function(xhr, status, error) {
+        // Handle errors (show error message, etc.)
+        alert("An error occurred: " + error);
+      }
+    });
+  });
+
   const $button = $('#load-more-posts');
   
   $button.on('click', function() {
@@ -88,3 +120,7 @@ $(function() {
   // Call the loadTweets function when the document is ready
   loadTweets();
 });
+
+// $(document).ready(function() {
+  
+// });
