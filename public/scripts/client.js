@@ -34,7 +34,7 @@ const createTweetElement = function(tweetData) {
   <article>
   <h5><img src= "${tweetData.user.avatars}"> ${tweetData.user.name}<span>${tweetData.user.handle}</span></h5>     <p>${tweetData.content.text}</p>
   <footer>
-  <time>${tweetData.user.created_at}</time>
+  <time>${timeago.format(tweetData.user.created_at)}</time>
   <div class="icons">
     <i class="fa-solid fa-flag"></i>
     <i class="fa-solid fa-share"></i>
