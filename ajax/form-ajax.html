@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Ajax Form Submission Example</title>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+  <form id="my-form">
+    <h1>Contact Form</h1>
+    
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" required></textarea>
+    
+    <button type="submit">Send Message</button>
+  </form>
+
+  <!-- Your AJAX script will go here -->
+  <script>
+    $(document).ready(function() {
+      $('#my-form').on('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submit action
+        
+        var formData = $(this).serialize(); // Serialize form data
+        
+        $.ajax({
+          type: "POST",
+          url: "http://localhost:8080/tweets", // Replace with your server endpoint
+          data: formData,
+          success: function(response) {
+            // Handle success (show success message, clear form, etc.)
+            alert("Message sent successfully!");
+          },
+          error: function(xhr, status, error) {
+            // Handle errors (show error message, etc.)
+            alert("An error occurred: " + error);
+          }
+        });
+      });
+    });
+    </script>
+
+</body>
+</html>
