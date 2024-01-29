@@ -23,14 +23,16 @@
   <!-- Your AJAX script will go here -->
   <script>
     $(document).ready(function() {
-      $('#my-form').on('submit', function(event) {
+      $('#my-form2-abcd').on('submit', function(event) {
         event.preventDefault(); // Prevent the default form submit action
-        
         var formData = $(this).serialize(); // Serialize form data
+          if(formData.length < 1) {
+            alert("Tweets Must contain atleast 1 character");
+          };
         
         $.ajax({
           type: "POST",
-          url: "http://localhost:8080/tweets", // Replace with your server endpoint
+          url: "/tweets", // Replace with your server endpoint
           data: formData,
           success: function(response) {
             // Handle success (show success message, clear form, etc.)
