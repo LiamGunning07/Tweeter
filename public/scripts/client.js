@@ -48,13 +48,43 @@ const createTweetElement = function(tweetData) {
 
 const renderTweets = function(tweets) {
 tweets.forEach(tweet => {
-  //createTweetElement(tweet);
   $('.tweets-container').append(createTweetElement(tweet));
 });
 };
 
-/*const $tweet = createTweetElement(tweetData);
-console.log($tweet);
-$('.tweets-container').append($tweet);*/
 
-renderTweets(data);
+$(function() {
+  const $button = $('#load-more-posts');
+  
+  $button.on('click', function() {
+      console.log('Button clicked, performing ajax call...');
+      // Fix: Use $.ajax instead of $.ajax('more-posts.html', { method: 'GET' })
+      $.ajax({
+          url: "/tweets",
+          method: 'GET',
+      }).then(function(morePostsHtml) {
+          console.log('Success: ', morePostsHtml);
+
+          // Fix: Remove the extra 'Html)' and replaceWith with html() function
+          $button.before(morePostsHtml);
+      });
+  });
+  function loadTweets() {
+    $.ajax({
+      url: '/tweets',
+      method: 'GET',
+      dataType: 'json',
+      success: function(tweets) {
+        // Call renderTweets function to render tweets to the DOM
+        renderTweets(tweets);
+      },
+      error: function(error) {
+        // Handle the error if the request fails
+        console.error('Error fetching tweets:', error);
+      }
+    });
+  }
+
+  // Call the loadTweets function when the document is ready
+  loadTweets();
+});
