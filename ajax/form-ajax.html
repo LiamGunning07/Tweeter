@@ -22,29 +22,29 @@
 
   <!-- Your AJAX script will go here -->
   <script>
-    $(document).ready(function() {
-      $('#my-form2-abcd').on('submit', function(event) {
-        event.preventDefault(); // Prevent the default form submit action
-        var formData = $(this).serialize(); // Serialize form data
-          if(formData.length < 1) {
-            alert("Tweets Must contain atleast 1 character");
-          };
+    // $(document).ready(function() {
+    //   $('#my-form2-abcd').on('submit', function(event) {
+    //     event.preventDefault(); // Prevent the default form submit action
+    //     var formData = $(this).serialize(); // Serialize form data
+    //       if(formData.length < 1) {
+    //         alert("Tweets Must contain atleast 1 character");
+    //       };
         
-        $.ajax({
-          type: "POST",
-          url: "/tweets", // Replace with your server endpoint
-          data: formData,
-          success: function(response) {
-            // Handle success (show success message, clear form, etc.)
-            alert("Message sent successfully!");
-          },
-          error: function(xhr, status, error) {
-            // Handle errors (show error message, etc.)
-            alert("An error occurred: " + error);
-          }
-        });
-      });
-    });
+    //     $.ajax({
+    //       type: "POST",
+    //       url: "/tweets", // Replace with your server endpoint
+    //       data: formData,
+    //       success: function(response) {
+    //         // Handle success (show success message, clear form, etc.)
+    //         alert("Message sent successfully!");
+    //       },
+    //       error: function(xhr, status, error) {
+    //         // Handle errors (show error message, etc.)
+    //         alert("An error occurred: " + error);
+    //       }
+    //     });
+    //   });
+    // });
     </script>
 
 </body>
