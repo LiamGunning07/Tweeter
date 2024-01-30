@@ -4,7 +4,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-const data = [
+const tweetData = [
   {
     "user": {
       "name": "Newton",
@@ -47,6 +47,7 @@ const createTweetElement = function(tweetData) {
 }
 
 const renderTweets = function(tweets) {
+$('.tweets-container').empty();
 tweets.forEach(tweet => {
   $('.tweets-container').append(createTweetElement(tweet));
 });
@@ -57,17 +58,16 @@ $(function() {
 
   $('#my-form').on('submit', function(event) {
     event.preventDefault(); // Prevent the default form submit action
-    
     var formData = $(this).serialize(); // Serialize form data
     console.log("Form data", formData);
 
       if(formData.length == 5) {
-        alert("Tweets Must contain atleast 1 character");
+        alert("Tweets must contain atleast 1 character");
         return;
       };
       
       if(formData.length > 145) {
-        alert("Tweets Must contain less than 140 characters");
+        alert("Tweets must contain less than 140 characters");
         return;
       };
 
@@ -76,8 +76,9 @@ $(function() {
       url: "/tweets", // Replace with your server endpoint
       data: formData,
       success: function(response) {
-        // Handle success (show success message, clear form, etc.)
         alert("Message sent successfully!");
+        loadTweets();
+        $('#tweet-text').empty();
       },
       error: function(xhr, status, error) {
         // Handle errors (show error message, etc.)
@@ -87,7 +88,6 @@ $(function() {
   });
 
   const $button = $('#load-more-posts');
-  
   $button.on('click', function() {
       console.log('Button clicked, performing ajax call...');
       // Fix: Use $.ajax instead of $.ajax('more-posts.html', { method: 'GET' })
@@ -101,6 +101,7 @@ $(function() {
           $button.before(morePostsHtml);
       });
   });
+
   function loadTweets() {
     $.ajax({
       url: '/tweets',
@@ -108,6 +109,8 @@ $(function() {
       dataType: 'json',
       success: function(tweets) {
         // Call renderTweets function to render tweets to the DOM
+        // REorder by timeago
+      tweets.sort((a,b) => a -b)
         renderTweets(tweets);
       },
       error: function(error) {
