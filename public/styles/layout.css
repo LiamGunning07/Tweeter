@@ -29,7 +29,12 @@ body {
   background-color: #f4f1ec;
   margin: auto;
  }
- .container-p {
-  display: flex;
-  justify-content: center;
- }
+
+ /* Style for error messages */
+.error-message {
+  display: none;
+  color: #ff0000;
+  /* Red color for error messages */
+  font-size: 24px;
+}
+    
