@@ -49,7 +49,7 @@ const createTweetElement = function(tweetData) {
 const renderTweets = function(tweets) {
 $('.tweets-container').empty();
 tweets.forEach(tweet => {
-  $('.tweets-container').append(createTweetElement(tweet));
+  $('.tweets-container').prepend(createTweetElement(tweet));
 });
 };
 
@@ -78,7 +78,7 @@ $(function() {
       success: function(response) {
         alert("Message sent successfully!");
         loadTweets();
-        $('#tweet-text').empty();
+        $('#tweet-text').val(' ');
       },
       error: function(xhr, status, error) {
         // Handle errors (show error message, etc.)
@@ -109,9 +109,7 @@ $(function() {
       dataType: 'json',
       success: function(tweets) {
         // Call renderTweets function to render tweets to the DOM
-        // REorder by timeago
-      tweets.sort((a,b) => a -b)
-        renderTweets(tweets);
+        renderTweets(tweets).prepend("");
       },
       error: function(error) {
         // Handle the error if the request fails
