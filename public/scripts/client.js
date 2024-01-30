@@ -3,6 +3,11 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
 
 const tweetData = [
   {
@@ -32,7 +37,7 @@ const createTweetElement = function(tweetData) {
   const $tweet = $(`
   <br>
   <article>
-  <h5><img src= "${tweetData.user.avatars}"> ${tweetData.user.name}<span>${tweetData.user.handle}</span></h5>     <p>${tweetData.content.text}</p>
+  <h5><img src= "${tweetData.user.avatars}"> ${tweetData.user.name}<span>${tweetData.user.handle}</span></h5> <p>${escape(tweetData.content.text)}</p>
   <footer>
   <time>${timeago.format(tweetData.user.created_at)}</time>
   <div class="icons">
@@ -61,13 +66,23 @@ $(function() {
     var formData = $(this).serialize(); // Serialize form data
     console.log("Form data", formData);
 
-      if(formData.length == 5) {
-        alert("Tweets must contain atleast 1 character");
-        return;
+    if(formData.length == 5) {
+      $('#validation-error-message')
+        .text('Tweets must contain at least 1 character.')
+        .slideDown(400) // Slide down with a duration of 400 milliseconds
+        .delay(5000)    // Delay for 5 seconds
+        .slideUp(400);  // Slide up with a duration of 400 milliseconds
+      
+      return;
       };
       
       if(formData.length > 145) {
-        alert("Tweets must contain less than 140 characters");
+        $('#validation-error-message')
+          .text('Tweets must have less than 140 characters.')
+          .slideDown(400)
+          .delay(5000)
+          .slideUp(400);
+        
         return;
       };
 
@@ -76,7 +91,6 @@ $(function() {
       url: "/tweets", // Replace with your server endpoint
       data: formData,
       success: function(response) {
-        alert("Message sent successfully!");
         loadTweets();
         $('#tweet-text').val(' ');
       },
@@ -121,7 +135,3 @@ $(function() {
   // Call the loadTweets function when the document is ready
   loadTweets();
 });
-
-// $(document).ready(function() {
-  
-// });
