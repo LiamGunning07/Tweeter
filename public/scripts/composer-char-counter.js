@@ -1,6 +1,6 @@
 $(document).ready(function () {
   // Use an appropriate selector for the textarea element inside the .new-tweet section
-  $(".new-tweet textarea").on("keypress", function () {
+  $(".new-tweet textarea").on("input", function () {
     // Your event handling code goes here
     let characterCount = $(this).val().length;
     let remainingCharacters = 140 - characterCount;
