@@ -69,6 +69,7 @@ $(function() {
       success: function(response) {
         loadTweets();
         $('#tweet-text').val(' ');
+        $('.counter').val('140');
       },
       error: function(xhr, status, error) {
         // Handle errors (show error message, etc.)
