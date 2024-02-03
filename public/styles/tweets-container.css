@@ -39,6 +39,7 @@
   padding: 10px;
   margin: auto;
   margin-bottom: 20px;
+  word-wrap: break-word;
 }
 
 .fa-solid.fa-flag:hover,
