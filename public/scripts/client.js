@@ -41,8 +41,9 @@ $(function() {
     event.preventDefault(); // Prevent the default form submit action
     var formData = $(this).serialize(); // Serialize form data
     console.log("Form data", formData);
+    let tweetContent = $('#tweet-text').val()
 
-    if(formData.length == 5) {
+    if(tweetContent.length === 0) {
       $('#validation-error-message')
         .text('Tweets must contain at least 1 character.')
         .slideDown(400) // Slide down with a duration of 400 milliseconds
@@ -52,7 +53,7 @@ $(function() {
       return;
       };
       
-      if(formData.length > 145) {
+      if(tweetContent.length > 140) {
         $('#validation-error-message')
           .text('Tweets must have less than 140 characters.')
           .slideDown(400)
